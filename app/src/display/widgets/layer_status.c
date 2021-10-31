@@ -23,6 +23,7 @@ struct layer_status_state {
 };
 
 static void set_layer_symbol(lv_obj_t *label, struct layer_status_state state) {
+    return
     if (state.label == NULL) {
         char text[6] = {};
 
@@ -48,9 +49,9 @@ static struct layer_status_state layer_status_get_state(const zmk_event_t *eh) {
     return (struct layer_status_state){.index = index, .label = zmk_keymap_layer_label(index)};
 }
 
-// ZMK_DISPLAY_WIDGET_LISTENER(widget_layer_status, struct layer_status_state, layer_status_update_cb, layer_status_get_state)
+ZMK_DISPLAY_WIDGET_LISTENER(widget_layer_status, struct layer_status_state, layer_status_update_cb, layer_status_get_state)
 
-// ZMK_SUBSCRIPTION(widget_layer_status, zmk_layer_state_changed);
+ZMK_SUBSCRIPTION(widget_layer_status, zmk_layer_state_changed);
 
 int zmk_widget_layer_status_init(struct zmk_widget_layer_status *widget, lv_obj_t *parent) {
     widget->obj = lv_label_create(parent, NULL);
