@@ -26,6 +26,13 @@ config BOARD
 config ZMK_SPLIT
 	default y
 
+config ZMK_IDLE_TIMEOUT
+	int "Milliseconds of inactivity before entering idle state (OLED shutoff, etc)"
+	default 300000 # 5 minutes
+config ZMK_IDLE_SLEEP_TIMEOUT
+	int "Milliseconds of inactivity before entering deep sleep"
+	default 1800000 # 30 minutes
+
 config I2C
 	bool
 	default y
